@@ -10,6 +10,10 @@ public class Tester {
             et.sendMessage("Earth", "Earth.txt2");
             //Send valid klingon message
             et.sendMessage("Klingon", "src/Klingon.txt");
+            //Create Universal Translator
+            UniversalTranslator ut = new UniversalTranslator(new KlingonText());
+            EarthCellPhone e2 = ut;
+            e2.readMessage("src/Klingon.txt");
         }
         catch (InvalidLanguageException ile) {
             System.out.println(ile.getMessage());
