@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class KlingonText implements AlienCellPhone {
+public class VulcanText implements AlienCellPhone {
     /**
      * Method to send alien text
      * @param fileName path of file to send
@@ -10,7 +10,7 @@ public class KlingonText implements AlienCellPhone {
     @Override
     public void alienSendText(String fileName) {
         try(Scanner in = new Scanner(new File(fileName))) {
-            System.out.println("Klingon Message Sent");
+            System.out.println("Vulcan Message Sent");
         }
         catch (FileNotFoundException e) {
             System.out.println("File: " + fileName + " does not exist");
@@ -25,7 +25,7 @@ public class KlingonText implements AlienCellPhone {
     public void alienReadText(String fileName) {
         try (Scanner in = new Scanner(new File(fileName))) {
             String translatedText = translateText(fileName);
-            System.out.println("Klingon " + translatedText);
+            System.out.println("Vulcan " + translatedText);
         }
         catch (FileNotFoundException e) {
             System.out.println("File: " + fileName + " not found");
@@ -48,7 +48,7 @@ public class KlingonText implements AlienCellPhone {
             char[] array = line.toCharArray();
             char[] translatedArray = new char[array.length];
             int index = 0;
-            for (int i = array.length - 1; i>=0; i--) {
+            for (int i = array.length - 1; i>=0; i-=2) {
                 translatedArray[index] = array[i];
                 index++;
             }
