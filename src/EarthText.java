@@ -3,6 +3,9 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class EarthText implements EarthCellPhone {
+    /**
+     * Null Constructor
+     */
     public EarthText(){}
 
 
@@ -41,5 +44,14 @@ public class EarthText implements EarthCellPhone {
         catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    /**
+     * Overriding tostring
+     * @return String
+     */
+    @Override
+    public String toString() {
+        return ("EarthText");
     }
 }

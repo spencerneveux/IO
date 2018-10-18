@@ -4,6 +4,11 @@ import java.util.Scanner;
 
 public class KlingonText implements AlienCellPhone {
     /**
+     * Null Constructor
+     */
+    public KlingonText() {}
+
+    /**
      * Method to send alien text
      * @param fileName path of file to send
      */
@@ -59,5 +64,14 @@ public class KlingonText implements AlienCellPhone {
             System.out.println("File: " + filename + " not found");
         }
         return null;
+    }
+
+    /**
+     * Overriding tostring
+     * @return String
+     */
+    @Override
+    public String toString() {
+        return ("KlingonText");
     }
 }
