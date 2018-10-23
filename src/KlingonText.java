@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class KlingonText implements AlienCellPhone {
@@ -28,7 +29,7 @@ public class KlingonText implements AlienCellPhone {
      */
     @Override
     public void alienReadText(String fileName) {
-        try (Scanner in = new Scanner(new File(fileName))) {
+        try (Scanner in = new Scanner(new File(fileName))){
             String translatedText = translateText(fileName);
             System.out.println("Klingon " + translatedText);
         }
@@ -44,7 +45,8 @@ public class KlingonText implements AlienCellPhone {
      */
     @Override
     public String translateText(String filename) {
-        try (Scanner in = new Scanner(new File(filename))){
+        try (Scanner in = new Scanner(new File(filename));
+        PrintWriter out = new PrintWriter(filename + "out")){
             String line = "";
             while (in.hasNextLine()) {
                 line += in.nextLine();
@@ -58,6 +60,7 @@ public class KlingonText implements AlienCellPhone {
                 index++;
             }
             String translatedText = new String(translatedArray);
+            out.println(translatedText);
             return translatedText;
         }
         catch (FileNotFoundException e) {

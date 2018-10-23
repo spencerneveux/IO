@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class VulcanText implements AlienCellPhone {
@@ -44,7 +45,8 @@ public class VulcanText implements AlienCellPhone {
      */
     @Override
     public String translateText(String filename) {
-        try (Scanner in = new Scanner(new File(filename))){
+        try (Scanner in = new Scanner(new File(filename));
+        PrintWriter out = new PrintWriter(filename + "out")){
             String line = "";
             while (in.hasNextLine()) {
                 line += in.nextLine();
@@ -53,11 +55,12 @@ public class VulcanText implements AlienCellPhone {
             char[] array = line.toCharArray();
             char[] translatedArray = new char[array.length];
             int index = 0;
-            for (int i = array.length - 1; i>=0; i-=2) {
+            for (int i = array.length - 1; i>=0; i-=1) {
                 translatedArray[index] = array[i];
                 index++;
             }
             String translatedText = new String(translatedArray);
+            out.println(translatedText);
             return translatedText;
         }
         catch (FileNotFoundException e) {
